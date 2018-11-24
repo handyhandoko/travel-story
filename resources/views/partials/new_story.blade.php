@@ -1,6 +1,7 @@
 <div class="card">
     <form method="post" action="{{ url('/images-save') }}" enctype="multipart/form-data" class="dropzone" id="my-dropzone">
         {{ csrf_field() }}
+        <input id="remove-url" type="hidden" value="/images-delete"/>
         <div class="dz-message">
             <div class="col-xs-8">
                 <div class="message">
@@ -12,7 +13,7 @@
             <input type="file" name="file" multiple>
         </div>
     </form>
-    {!! Form::open(['url' => 'story']) !!}
+    {!! Form::open(['url' => 'story', 'id'=>'form']) !!}
         {{ Form::textarea('content', null, array('placeholder'=>'Ceritakan kisah perjalanan mu disini',
     'class'=>'autoExpand', 'rows'=>'3', 'data-min-rows'=>'3')) }}
 

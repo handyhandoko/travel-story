@@ -12,26 +12,6 @@ use Auth;
 class StoryController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * validate input
      * 
      * @param \Illuminate\Http\Request  $request
@@ -80,7 +60,7 @@ class StoryController extends Controller
             $story->save();
             
             //update story_id on story image table 
-            StoryImage::whereIn('id', $request->story_image_ids)
+            StoryImage::whereIn('id', $request->image_ids)
                         ->update(array('story_id' => $story->id));
 
             //TODO: add notif here

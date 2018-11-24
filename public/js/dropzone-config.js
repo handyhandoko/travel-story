@@ -12,7 +12,7 @@ Dropzone.options.myDropzone = {
     init: function () {
         this.on("removedfile", function (file) {
             $.post({
-                url: '/images-delete',
+                url: $('#remove-url').val(),
                 data: {id: file.name, _token: $('[name="_token"]').val()},
                 dataType: 'json',
                 success: function (data) {
@@ -25,12 +25,12 @@ Dropzone.options.myDropzone = {
     success: function (file, data) {
         total_photos_counter++;
         $("#counter").text("# " + total_photos_counter);
-        $.each(data.story_image_ids, function(k, v) {
+        $.each(data.image_ids, function(k, v) {
             $('<input>').attr({
                 type: 'hidden',
                 value: v,
-                name: 'story_image_ids[]'
-            }).appendTo('form');
+                name: 'image_ids[]'
+            }).appendTo('#form');
         });
     }
 };
