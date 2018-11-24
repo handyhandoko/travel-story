@@ -92,7 +92,10 @@ class StoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $story = Story::find($id);
+        return view('pages/full_story', [
+            'story' => $story
+        ]);
     }
 
     /**
