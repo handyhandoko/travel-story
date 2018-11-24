@@ -26,3 +26,7 @@ Route::get('/images-upload', 'StoryImagesController@create');
 Route::post('/images-save', 'StoryImagesController@store');
 Route::post('/images-delete', 'StoryImagesController@destroy');
 Route::get('/images-show', 'StoryImagesController@index');
+Route::post('/sharecost-images-save', 'StoryImagesController@storeShareCost');
+Route::post('/sharecost-images-delete', 'StoryImagesController@destroyShareCost');
+
+Route::resource('sharecost', 'ShareCostController');

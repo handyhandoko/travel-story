@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $stories = Story::paginate(10);
+        $stories = Story::orderBy('id', 'DESC')->paginate(10);
         return view('home', [
             'stories' => $stories
         ]);
