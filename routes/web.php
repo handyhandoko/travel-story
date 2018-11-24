@@ -21,3 +21,8 @@ Route::get('story/{id}', 'StoryController@show');
 Route::post('story', 'StoryController@store')->middleware('auth');
 Route::put('story/{id}', 'StoryController@update')->middleware('auth');
 Route::delete('story/{id}', 'StoryController@destroy')->middleware('auth');
+
+Route::get('/image', 'UploadImagesController@create');
+Route::post('/images-save', 'UploadImagesController@store');
+Route::post('/images-delete', 'UploadImagesController@destroy');
+Route::get('/images-show', 'UploadImagesController@index');
