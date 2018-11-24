@@ -15,9 +15,7 @@ class CreateStoriesTable extends Migration
     {
         Schema::create('stories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title', 100);
             $table->text('content');
-            $table->boolean('publish');
             $table->unsignedInteger('user_id');
             $table->timestamps();
             $table->softDeletes();
