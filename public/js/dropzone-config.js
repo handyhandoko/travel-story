@@ -22,8 +22,15 @@ Dropzone.options.myDropzone = {
             });
         });
     },
-    success: function (file, done) {
+    success: function (file, data) {
         total_photos_counter++;
         $("#counter").text("# " + total_photos_counter);
+        $.each(data.story_image_ids, function(k, v) {
+            $('<input>').attr({
+                type: 'hidden',
+                value: v,
+                name: 'story_image_ids[]'
+            }).appendTo('form');
+        });
     }
 };

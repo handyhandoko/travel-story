@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Story;
+use App\StoryImage;
 use Validator;
 use Redirect;
 use Auth;
@@ -77,6 +78,10 @@ class StoryController extends Controller
             $story = new Story;
             $this->setData($story, $request);
             $story->save();
+            
+            //update story_id on story image table 
+            StoryImage::whereIn('id', $request->story_image_ids)
+                        ->update(array('story_id' => $story->id));
 
             //TODO: add notif here
             // redirect

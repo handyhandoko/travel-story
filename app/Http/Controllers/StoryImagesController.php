@@ -55,6 +55,7 @@ class StoryImagesController extends Controller
             mkdir($this->photos_path, 0777);
         }
  
+        $image_ids = array();
         for ($i = 0; $i < count($photos); $i++) {
             $photo = $photos[$i];
             $name = sha1(date('YmdHis') . str_random(30));
@@ -69,13 +70,16 @@ class StoryImagesController extends Controller
  
             $photo->move($this->photos_path, $save_name);
  
-            $upload = new StoryImage();
-            $upload->filename = $save_name;
-            $upload->resized_name = $resize_name;
-            $upload->original_name = basename($photo->getClientOriginalName());
-            $upload->save();
+            $story_image = new StoryImage();
+            $story_image->filename = $save_name;
+            $story_image->resized_name = $resize_name;
+            $story_image->original_name = basename($photo->getClientOriginalName());
+            $story_image->save();
+
+            array_push($image_ids, $story_image->id);
         }
         return Response::json([
+            'story_image_ids' => $image_ids,
             'message' => 'Image saved Successfully'
         ], 200);
     }
