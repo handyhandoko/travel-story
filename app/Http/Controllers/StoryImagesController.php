@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Upload;
+use App\StoryImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Intervention\Image\Facades\Image;
 
-class UploadImagesController extends Controller
+class StoryImagesController extends Controller
 {
     private $photos_path;
  
@@ -23,7 +23,7 @@ class UploadImagesController extends Controller
      */
     public function index()
     {
-        $photos = Upload::all();
+        $photos = StoryImage::all();
         return view('uploaded-images', compact('photos'));
     }
  
@@ -69,7 +69,7 @@ class UploadImagesController extends Controller
  
             $photo->move($this->photos_path, $save_name);
  
-            $upload = new Upload();
+            $upload = new StoryImage();
             $upload->filename = $save_name;
             $upload->resized_name = $resize_name;
             $upload->original_name = basename($photo->getClientOriginalName());
@@ -88,7 +88,7 @@ class UploadImagesController extends Controller
     public function destroy(Request $request)
     {
         $filename = $request->id;
-        $uploaded_image = Upload::where('original_name', basename($filename))->first();
+        $uploaded_image = StoryImage::where('original_name', basename($filename))->first();
  
         if (empty($uploaded_image)) {
             return Response::json(['message' => 'Sorry file does not exist'], 400);
