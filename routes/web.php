@@ -11,14 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('story/{id}', 'StoryController@show');
 Route::post('story', 'StoryController@store')->middleware('auth');
 Route::put('story/{id}', 'StoryController@update')->middleware('auth');
 Route::delete('story/{id}', 'StoryController@destroy')->middleware('auth');
