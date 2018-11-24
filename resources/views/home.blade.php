@@ -9,6 +9,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             @include('partials/new_story')
+            @include('partials/story_line')
         </div>
     </div>
 </div>
