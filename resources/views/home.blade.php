@@ -9,8 +9,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @include('partials/new_story')
-            @include('partials/story_line')
+            @auth
+                @include('partials/new_story')
+            @endauth
+                @include('partials/story_line')
         </div>
     </div>
 </div>

@@ -9,7 +9,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @include('partials/new_sharecost')
+                @auth
+                    @include('partials/new_sharecost')
+                @endauth
             @include('partials/sharecost_line')
         </div>
     </div>
