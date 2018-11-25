@@ -96,9 +96,9 @@ class ShareCostController extends Controller
      */
     public function show($id)
     {
-        $story = Story::find($id);
-        return view('pages/full_story', [
-            'story' => $story
+        $share_cost = ShareCost::find($id);
+        return view('pages/full_sharecost', [
+            'share_cost' => $share_cost
         ]);
     }
 }
