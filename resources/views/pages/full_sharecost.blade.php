@@ -18,7 +18,12 @@
                     <p>{{$paragraph}}</p>
                 @endif
             @endforeach
-                Share cost ini akan berakhir tanggal {{ $share_cost->end_time->format('d/m/Y') }}<br/>
+            Share cost ini akan berakhir tanggal {{ $share_cost->end_time->format('d/m/Y') }}<br/>
+            Contact : {{ $share_cost->contact }}<br/>
+            Whatsapp : 
+            @if(substr( $share_cost->wa_contact, 0, 1 ) == "0")
+                <a href="https://wa.me/62{{ substr( $share_cost->wa_contact, 1, strlen($share_cost->wa_contact) ) }}">Hubungi via Whatsapp<a>
+            @endif
         </div>
     </div>
 </div>
