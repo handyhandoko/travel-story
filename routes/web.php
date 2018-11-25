@@ -29,4 +29,8 @@ Route::get('/images-show', 'StoryImagesController@index');
 Route::post('/sharecost-images-save', 'StoryImagesController@storeShareCost');
 Route::post('/sharecost-images-delete', 'StoryImagesController@destroyShareCost');
 
+Route::get('/trijek', function(){
+    return view('pages/trijek');
+});
+
 Route::resource('sharecost', 'ShareCostController');

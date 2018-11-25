@@ -38,6 +38,7 @@
                     <ul class="navbar-nav mr-auto">
                         <a class="nav-link" href="{{ route('home') }}">Story</a>
                         <a class="nav-link" href="{{ url('sharecost') }}">Share cost</a>
+                        <a class="nav-link" href="{{ url('trijek') }}">Trip by Ojek</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
