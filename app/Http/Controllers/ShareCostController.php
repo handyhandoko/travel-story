@@ -78,7 +78,8 @@ class ShareCostController extends Controller
             $sharecost->save();
             
             //update sharecost_id on sharecost image table 
-            ShareCostImage::whereIn('id', $request->image_ids)
+            if($request->image_ids)
+                ShareCostImage::whereIn('id', $request->image_ids)
                         ->update(array('share_cost_id' => $sharecost->id));
 
             //TODO: add notif here

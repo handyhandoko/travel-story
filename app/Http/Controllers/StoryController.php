@@ -59,8 +59,9 @@ class StoryController extends Controller
             $this->setData($story, $request);
             $story->save();
             
-            //update story_id on story image table 
-            StoryImage::whereIn('id', $request->image_ids)
+            //update story_id on story image table if there is image
+            if($request->image_ids)
+                StoryImage::whereIn('id', $request->image_ids)
                         ->update(array('story_id' => $story->id));
 
             //TODO: add notif here
