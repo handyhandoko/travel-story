@@ -4,9 +4,11 @@
 
 @foreach($stories as $story)
     <div class="card story">
-        {{ str_limit(strip_tags($story->content), 500) }}
-        @if (strlen(strip_tags($story->content)) > 50)
-            ... <a href="{{URL::to('story/' . $story->id) }}">Read More</a>
+        @if($story->images()->exists())
+            <img class="card-img-top" src="/images/{{ $story->images->first()->resized_name }}" alt="Gambar perjalanan">
         @endif
+        <div class="card-body">
+            {{ str_limit(strip_tags($story->content), 500) }} ... <a href="{{URL::to('story/' . $story->id) }}">View More</a>
+        </div>
     </div>
 @endforeach
