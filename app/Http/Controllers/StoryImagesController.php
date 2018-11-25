@@ -64,7 +64,7 @@ class StoryImagesController extends Controller
             $resize_name = $name . str_random(2) . '.' . $photo->getClientOriginalExtension();
  
             Image::make($photo)
-                ->resize(250, null, function ($constraints) {
+                ->resize(640, null, function ($constraints) {
                     $constraints->aspectRatio();
                 })
                 ->save($this->photos_path . '/' . $resize_name);
@@ -111,7 +111,7 @@ class StoryImagesController extends Controller
             $resize_name = $name . str_random(2) . '.' . $photo->getClientOriginalExtension();
  
             Image::make($photo)
-                ->resize(250, null, function ($constraints) {
+                ->resize(640, null, function ($constraints) {
                     $constraints->aspectRatio();
                 })
                 ->save($this->photos_path . '/' . $resize_name);
